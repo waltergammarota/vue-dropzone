@@ -388,17 +388,17 @@
         border-bottom: 6px solid #be2626; }
 
 .vue-dropzone {
-  border: 2px solid #E5E5E5;
-  font-family: 'Arial', sans-serif;
+  border: 2px solid #e5e5e5;
+  font-family: "Arial", sans-serif;
   letter-spacing: 0.2px;
   color: #777;
   transition: background-color 0.2s linear;
 }
 .vue-dropzone:hover {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 .vue-dropzone i {
-  color: #CCC;
+  color: #ccc;
 }
 .vue-dropzone .dz-preview .dz-image {
   border-radius: 0;
@@ -418,7 +418,7 @@
   top: 0;
   color: white;
   background-color: rgba(33, 150, 243, 0.8);
-  transition: opacity .2s linear;
+  transition: opacity 0.2s linear;
   text-align: left;
 }
 .vue-dropzone .dz-preview .dz-details .dz-filename {
