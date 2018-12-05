@@ -128,7 +128,7 @@ export default {
           }
         }
       }
-      if(file.preload){
+      if(!file.preload){
         vm.$emit("vdropzone-file-added", file);
         if (vm.isS3 && vm.wasQueueAutoProcess) {
           vm.getSignedAndUploadToS3(file);
