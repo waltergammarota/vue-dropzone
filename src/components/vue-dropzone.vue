@@ -128,11 +128,13 @@ export default {
           }
         }
       }
-
-      vm.$emit("vdropzone-file-added", file);
-      if (vm.isS3 && vm.wasQueueAutoProcess) {
-        vm.getSignedAndUploadToS3(file);
+      if(file.preload){
+        vm.$emit("vdropzone-file-added", file);
+        if (vm.isS3 && vm.wasQueueAutoProcess) {
+          vm.getSignedAndUploadToS3(file);
+        }
       }
+
     });
 
     this.dropzone.on("addedfiles", function(files) {
@@ -278,6 +280,7 @@ export default {
   },
   methods: {
     preloadFile: function(file, fileUrl) {
+      this.dropzone.emit("addedfile", file);
       this.dropzone.emit("thumbnail", file, fileUrl);
     },
     manuallyAddFile: function(file, fileUrl, emit) {
