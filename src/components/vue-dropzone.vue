@@ -257,9 +257,10 @@ export default {
     if (this.destroyDropzone) this.dropzone.destroy()
   },
   methods: {
-    manuallyAddFile: function(file, fileUrl) {
+    manuallyAddFile: function(file, fileUrl, emit) {
       file.manuallyAdded = true
-      this.dropzone.emit("addedfile", file)
+      if(emit)
+        this.dropzone.emit("addedfile", file)
       let containsImageFileType = false
       if (fileUrl.indexOf('.png') > -1 || fileUrl.indexOf('.jpg') > -1 || fileUrl.indexOf('.jpeg') > -1) containsImageFileType = true
       if (this.dropzone.options.createImageThumbnails && containsImageFileType && file.size <= this.dropzone.options.maxThumbnailFilesize * 1024 * 1024) {
@@ -272,7 +273,8 @@ export default {
           thumbnails[i].style['object-fit'] = 'contain';
         }
       }
-      this.dropzone.emit("complete", file)
+      if(emit)
+        this.dropzone.emit("complete", file)
       if (this.dropzone.options.maxFiles) this.dropzone.options.maxFiles--
       this.dropzone.files.push(file)
       this.$emit('vdropzone-file-added-manually', file)
