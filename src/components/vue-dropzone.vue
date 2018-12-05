@@ -128,13 +128,12 @@ export default {
           }
         }
       }
-      if(!file.preload){
+      if (!file.preload) {
         vm.$emit("vdropzone-file-added", file);
         if (vm.isS3 && vm.wasQueueAutoProcess) {
           vm.getSignedAndUploadToS3(file);
         }
       }
-
     });
 
     this.dropzone.on("addedfiles", function(files) {
@@ -283,9 +282,9 @@ export default {
       this.dropzone.emit("addedfile", file);
       this.dropzone.emit("thumbnail", file, fileUrl);
     },
-    manuallyAddFile: function(file, fileUrl, emit) {
+    manuallyAddFile: function(file, fileUrl) {
       file.manuallyAdded = true;
-      if (emit) this.dropzone.emit("addedfile", file);
+      this.dropzone.emit("addedfile", file);
       let containsImageFileType = false;
       if (
         fileUrl.indexOf(".png") > -1 ||
@@ -311,7 +310,7 @@ export default {
           thumbnails[i].style["object-fit"] = "contain";
         }
       }
-      if (emit) this.dropzone.emit("complete", file);
+      this.dropzone.emit("complete", file);
       if (this.dropzone.options.maxFiles) this.dropzone.options.maxFiles--;
       this.dropzone.files.push(file);
       this.$emit("vdropzone-file-added-manually", file);
