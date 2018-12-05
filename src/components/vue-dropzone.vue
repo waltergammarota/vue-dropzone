@@ -278,7 +278,7 @@ export default {
   },
   methods: {
     preloadFile: function(file, fileUrl) {
-      this.dropzone.$emit("thumbnail", file, fileUrl);
+      this.dropzone.emit("thumbnail", file, fileUrl);
     },
     manuallyAddFile: function(file, fileUrl, emit) {
       file.manuallyAdded = true;
