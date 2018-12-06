@@ -128,8 +128,8 @@ export default {
           }
         }
       }
+      vm.$emit("vdropzone-file-added", file);
       if (!file.preload) {
-        vm.$emit("vdropzone-file-added", file);
         if (vm.isS3 && vm.wasQueueAutoProcess) {
           vm.getSignedAndUploadToS3(file);
         }
@@ -281,6 +281,7 @@ export default {
     preloadFile: function(file, fileUrl) {
       this.dropzone.emit("addedfile", file);
       this.dropzone.emit("thumbnail", file, fileUrl);
+      this.dropzone.emit("complete", file); 
     },
     manuallyAddFile: function(file, fileUrl) {
       file.manuallyAdded = true;
