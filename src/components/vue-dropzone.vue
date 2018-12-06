@@ -322,6 +322,9 @@ export default {
     removeAllFiles: function(bool) {
       this.dropzone.removeAllFiles(bool);
     },
+    getAllFiles: function() {
+      return this.dropzone.files
+    },
     processQueue: function() {
       let dropzoneEle = this.dropzone;
       if (this.isS3 && !this.wasQueueAutoProcess) {
